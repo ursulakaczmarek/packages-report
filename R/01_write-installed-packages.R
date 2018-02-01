@@ -16,3 +16,14 @@
 
 ## when this script works, stage & commit it and the csv file
 ## PUSH!
+
+# create data frame and keep specified variables
+library(tidyverse)
+
+pax <- installed.packages() %>%
+  as_tibble() %>%
+  select(Package, LibPath, Version, Priority, Built)
+
+# overwrite existing csv
+write.csv(pax, '~/r scripts/packages-report/data/installed-packages.csv')
+
